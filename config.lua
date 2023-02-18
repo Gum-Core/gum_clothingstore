@@ -120,4 +120,5 @@ Config.Language = {
     [233] = {text = "wear",},
     [234] = {text = "bandana",},
     [235] = {text = "sleeves",},
+    [236] = {text = "necklace",},
 }

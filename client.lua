@@ -730,6 +730,19 @@ function play_anim(dict, name, time, flag)
     end
     TaskPlayAnim(PlayerPedId(), dict, name, 1.0, 1.0, time, flag, 0, true, 0, false, 0, false)  
 end
+
+local sleeves2 = false
+RegisterCommand(''..Config.Language[236].text..'', function()
+    play_anim('mech_inventory@clothing@bandana', 'neck_2_satchel', 3500, 25)
+    if not sleeves2 then 
+        Citizen.InvokeNative(0x66B957AAC2EAAEAB, PlayerPedId(),  Clothe_Table["Shirt"], `open_collar_rolled_sleeve`, 0, true, 1)
+        Citizen.InvokeNative(0xCC8CA3E88256E58F, PlayerPedId(), 0, 1, 1, 1, false)
+    else
+        Citizen.InvokeNative(0x66B957AAC2EAAEAB, PlayerPedId(),  Clothe_Table["Shirt"], `base`, 0, true, 1)
+        Citizen.InvokeNative(0xCC8CA3E88256E58F, PlayerPedId(), 0, 1, 1, 1, false)
+    end
+end)
+
 --Klobouk
 RegisterCommand(''..Config.Language[200].text..'', function(source, args, rawCommand)
     if Citizen.InvokeNative(0xFB4891BD7578CDC1, PlayerPedId(), 0x9925C067) then
