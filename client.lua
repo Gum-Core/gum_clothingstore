@@ -48,10 +48,12 @@ AddEventHandler("gum:SelectedCharacter", function(charid)
     Citizen.CreateThread(function()
         Citizen.Wait(10000)
         for k,v in pairs(Config.ClothingStore) do
-            local blips = N_0x554d9d53f696d002(1664425300, v["ClothingStore"][1], v["ClothingStore"][2], v["ClothingStore"][3])
-            SetBlipSprite(blips, 1195729388	, 1)
-            SetBlipScale(blips, 1.5)
-            Citizen.InvokeNative(0x9CB1A1623062F402, blips, v["ClothingBlip"])
+            if v.BlipEnable == nil or v.BlipEnable == true then
+                local blips = N_0x554d9d53f696d002(1664425300, v["ClothingStore"][1], v["ClothingStore"][2], v["ClothingStore"][3])
+                SetBlipSprite(blips, 1195729388	, 1)
+                SetBlipScale(blips, 1.5)
+                Citizen.InvokeNative(0x9CB1A1623062F402, blips, v["ClothingBlip"])
+            end
         end
         TriggerEvent('gum:ExecuteServerCallBack','gum_clothingstore:get_outfit', function(skintable, comptable)
             if skintable ~= 0 and skintable ~= nil and comptable ~= 0 and comptable ~= nil then
@@ -62,199 +64,199 @@ AddEventHandler("gum:SelectedCharacter", function(charid)
         if IsPedMale(PlayerPedId()) then
             for k,v in pairs(Config_2.Clothes) do
                 if v.ped_type == "male" and v.is_multiplayer == true and v.category_hashname == "accessories" then
-                    table.insert(AccesorieTable, {hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
+                    table.insert(AccesorieTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
                 end
                 if v.ped_type == "male" and v.is_multiplayer == true and v.category_hashname == "gauntlets" then
-                    table.insert(GauntletTable, {hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
+                    table.insert(GauntletTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
                 end
                 if v.ped_type == "male" and v.is_multiplayer == true and v.category_hashname == "skirts" then
-                    table.insert(SkirtTable, {hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
+                    table.insert(SkirtTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
                 end
                 if v.ped_type == "male" and v.is_multiplayer == true and v.category_hashname == "boots" then
-                    table.insert(BootTable, {hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
+                    table.insert(BootTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
                 end
                 if v.ped_type == "male" and v.is_multiplayer == true and v.category_hashname == "masks" then
-                    table.insert(MaskTable, {hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
+                    table.insert(MaskTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
                 end
                 if v.ped_type == "male" and v.is_multiplayer == true and v.category_hashname == "chaps" then
-                    table.insert(ChapTable, {hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
+                    table.insert(ChapTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
                 end
                 if v.ped_type == "male" and v.is_multiplayer == true and v.category_hashname == "pants" then
-                    table.insert(PantTable, {hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
+                    table.insert(PantTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
                 end
                 if v.ped_type == "male" and v.is_multiplayer == true and v.category_hashname == "holsters_right" then
-                    table.insert(RHolsterTable, {hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
+                    table.insert(RHolsterTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
                 end
                 if v.ped_type == "male" and v.is_multiplayer == true and v.category_hashname == "holsters_left" then
-                    table.insert(LHolsterTable, {hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
+                    table.insert(LHolsterTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
                 end
                 if v.ped_type == "male" and v.is_multiplayer == true and v.category_hashname == "belt_buckles" then
-                    table.insert(BucklesTable, {hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
+                    table.insert(BucklesTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
                 end
                 if v.ped_type == "male" and v.is_multiplayer == true and v.category_hashname == "belts" then
-                    table.insert(BeltsTable, {hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
+                    table.insert(BeltsTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
                 end
                 if v.ped_type == "male" and v.is_multiplayer == true and v.category_hashname == "gunbelts" then
-                    table.insert(GunbeltTable, {hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
+                    table.insert(GunbeltTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
                 end
                 if v.ped_type == "male" and v.is_multiplayer == true and v.category_hashname == "jewelry_bracelets" then
-                    table.insert(BraceletTable, {hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
+                    table.insert(BraceletTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
                 end
                 if v.ped_type == "male" and v.is_multiplayer == true and v.category_hashname == "jewelry_rings_left" then
-                    table.insert(LRingTable, {hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
+                    table.insert(LRingTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
                 end
                 if v.ped_type == "male" and v.is_multiplayer == true and v.category_hashname == "jewelry_rings_right" then
-                    table.insert(RRingTable, {hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
+                    table.insert(RRingTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
                 end
                 if v.ped_type == "male" and v.is_multiplayer == true and v.category_hashname == "gloves" then
-                    table.insert(GloveTable, {hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
+                    table.insert(GloveTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
                 end
                 if v.ped_type == "male" and v.is_multiplayer == true and v.category_hashname == "cloaks" then
-                    table.insert(CloakTable, {hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
+                    table.insert(CloakTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
                 end
                 if v.ped_type == "male" and v.is_multiplayer == true and v.category_hashname == "loadouts" then
-                    table.insert(LoadoutsTable, {hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
+                    table.insert(LoadoutsTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
                 end
                 if v.ped_type == "male" and v.is_multiplayer == true and v.category_hashname == "ponchos" then
-                    table.insert(PonchoTable, {hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
+                    table.insert(PonchoTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
                 end
                 if v.ped_type == "male" and v.is_multiplayer == true and v.category_hashname == "coats_closed" then
-                    table.insert(ClosedCoatTable, {hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
+                    table.insert(ClosedCoatTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
                 end
                 if v.ped_type == "male" and v.is_multiplayer == true and v.category_hashname == "coats" then
-                    table.insert(CoatTable, {hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
+                    table.insert(CoatTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
                 end
                 if v.ped_type == "male" and v.is_multiplayer == true and v.category_hashname == "vests" then
-                    table.insert(VestTable, {hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
+                    table.insert(VestTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
                 end
                 if v.ped_type == "male" and v.is_multiplayer == true and v.category_hashname == "hats" then
-                    table.insert(HatsTable, {hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
+                    table.insert(HatsTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
                 end
                 if v.ped_type == "male" and v.is_multiplayer == true and v.category_hashname == "spats" then
-                    table.insert(SpatsTable, {hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
+                    table.insert(SpatsTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
                 end
                 if v.ped_type == "male" and v.is_multiplayer == true and v.category_hashname == "eyewear" then
-                    table.insert(EyewearTable, {hash = v.hash, category_hash = v.category_hashsign, sign = v.hash_dec_signed})
+                    table.insert(EyewearTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hashsign, sign = v.hash_dec_signed})
                 end
                 if v.ped_type == "male" and v.is_multiplayer == true and v.category_hashname == "neckwear" then
-                    table.insert(ScarftTable, {hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
+                    table.insert(ScarftTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
                 end
                 if v.ped_type == "male" and v.is_multiplayer == true and v.category_hashname == "neckties" then
-                    table.insert(NecktieTable, {hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
+                    table.insert(NecktieTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
                 end
                 if v.ped_type == "male" and v.is_multiplayer == true and v.category_hashname == "shirts_full" then
-                    table.insert(ShirtTable, {hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
+                    table.insert(ShirtTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
                 end
                 if v.ped_type == "male" and v.is_multiplayer == true and v.category_hashname == "suspenders" then
-                    table.insert(SuspenderTable, {hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
+                    table.insert(SuspenderTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
                 end
                 if v.ped_type == "male" and v.is_multiplayer == true and v.category_hashname == "boot_accessories" then
-                    table.insert(SpurTable, {hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
+                    table.insert(SpurTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
                 end
                 if v.ped_type == "male" and v.is_multiplayer == true and v.category_hashname == "satchels" then
-                    table.insert(SatchelTable, {hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
+                    table.insert(SatchelTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
                 end
                 if v.ped_type == "male" and v.is_multiplayer == true and v.category_hashname == "gunbelt_accs" then
-                    table.insert(GunbeltAcsTable, {hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
+                    table.insert(GunbeltAcsTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
                 end
             end
         else
             for k,v in pairs(Config_2.Clothes) do
                 if v.ped_type == "female" and v.is_multiplayer == true and v.category_hashname == "gauntlets" then
-                    table.insert(GauntletTable, {hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
+                    table.insert(GauntletTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
                 end
                 if v.ped_type == "female" and v.is_multiplayer == true and v.category_hashname == "skirts" then
-                    table.insert(SkirtTable, {hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
+                    table.insert(SkirtTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
                 end
                 if v.ped_type == "female" and v.is_multiplayer == true and v.category_hashname == "boots" then
-                    table.insert(BootTable, {hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
+                    table.insert(BootTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
                 end
                 if v.ped_type == "female" and v.is_multiplayer == true and v.category_hashname == "masks" then
-                    table.insert(MaskTable, {hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
+                    table.insert(MaskTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
                 end
                 if v.ped_type == "female" and v.is_multiplayer == true and v.category_hashname == "chaps" then
-                    table.insert(ChapTable, {hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
+                    table.insert(ChapTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
                 end
                 if v.ped_type == "female" and v.is_multiplayer == true and v.category_hashname == "pants" then
-                    table.insert(PantTable, {hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
+                    table.insert(PantTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
                 end
                 if v.ped_type == "female" and v.is_multiplayer == true and v.category_hashname == "holsters_right" then
-                    table.insert(RHolsterTable, {hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
+                    table.insert(RHolsterTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
                 end
                 if v.ped_type == "female" and v.is_multiplayer == true and v.category_hashname == "holsters_left" then
-                    table.insert(LHolsterTable, {hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
+                    table.insert(LHolsterTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
                 end
                 if v.ped_type == "female" and v.is_multiplayer == true and v.category_hashname == "belt_buckles" then
-                    table.insert(BucklesTable, {hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
+                    table.insert(BucklesTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
                 end
                 if v.ped_type == "female" and v.is_multiplayer == true and v.category_hashname == "belts" then
-                    table.insert(BeltsTable, {hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
+                    table.insert(BeltsTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
                 end
                 if v.ped_type == "female" and v.is_multiplayer == true and v.category_hashname == "gunbelts" then
-                    table.insert(GunbeltTable, {hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
+                    table.insert(GunbeltTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
                 end
                 if v.ped_type == "female" and v.is_multiplayer == true and v.category_hashname == "jewelry_bracelets" then
-                    table.insert(BraceletTable, {hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
+                    table.insert(BraceletTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
                 end
                 if v.ped_type == "female" and v.is_multiplayer == true and v.category_hashname == "jewelry_rings_left" then
-                    table.insert(LRingTable, {hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
+                    table.insert(LRingTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
                 end
                 if v.ped_type == "female" and v.is_multiplayer == true and v.category_hashname == "jewelry_rings_right" then
-                    table.insert(RRingTable, {hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
+                    table.insert(RRingTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
                 end
                 if v.ped_type == "female" and v.is_multiplayer == true and v.category_hashname == "gloves" then
-                    table.insert(GloveTable, {hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
+                    table.insert(GloveTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
                 end
                 if v.ped_type == "female" and v.is_multiplayer == true and v.category_hashname == "cloaks" then
-                    table.insert(CloakTable, {hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
+                    table.insert(CloakTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
                 end
                 if v.ped_type == "female" and v.is_multiplayer == true and v.category_hashname == "loadouts" then
-                    table.insert(LoadoutsTable, {hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
+                    table.insert(LoadoutsTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
                 end
                 if v.ped_type == "female" and v.is_multiplayer == true and v.category_hashname == "ponchos" then
-                    table.insert(PonchoTable, {hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
+                    table.insert(PonchoTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
                 end
                 if v.ped_type == "female" and v.is_multiplayer == true and v.category_hashname == "coats_closed" then
-                    table.insert(ClosedCoatTable, {hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
+                    table.insert(ClosedCoatTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
                 end
                 if v.ped_type == "female" and v.is_multiplayer == true and v.category_hashname == "coats" then
-                    table.insert(CoatTable, {hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
+                    table.insert(CoatTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
                 end
                 if v.ped_type == "female" and v.is_multiplayer == true and v.category_hashname == "vests" then
-                    table.insert(VestTable, {hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
+                    table.insert(VestTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
                 end
                 if v.ped_type == "female" and v.is_multiplayer == true and v.category_hashname == "hats" then
-                    table.insert(HatsTable, {hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
+                    table.insert(HatsTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
                 end
                 if v.ped_type == "female" and v.is_multiplayer == true and v.category_hashname == "spats" then
-                    table.insert(SpatsTable, {hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
+                    table.insert(SpatsTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
                 end
                 if v.ped_type == "female" and v.is_multiplayer == true and v.category_hashname == "eyewear" then
-                    table.insert(EyewearTable, {hash = v.hash, category_hash = v.category_hashsign, sign = v.hash_dec_signed})
+                    table.insert(EyewearTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hashsign, sign = v.hash_dec_signed})
                 end
                 if v.ped_type == "female" and v.is_multiplayer == true and v.category_hashname == "neckwear" then
-                    table.insert(ScarftTable, {hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
+                    table.insert(ScarftTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
                 end
                 if v.ped_type == "female" and v.is_multiplayer == true and v.category_hashname == "neckties" then
-                    table.insert(NecktieTable, {hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
+                    table.insert(NecktieTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
                 end
                 if v.ped_type == "female" and v.is_multiplayer == true and v.category_hashname == "shirts_full" then
-                    table.insert(ShirtTable, {hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
+                    table.insert(ShirtTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
                 end
                 if v.ped_type == "female" and v.is_multiplayer == true and v.category_hashname == "suspenders" then
-                    table.insert(SuspenderTable, {hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
+                    table.insert(SuspenderTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
                 end
                 if v.ped_type == "female" and v.is_multiplayer == true and v.category_hashname == "boot_accessories" then
-                    table.insert(SpurTable, {hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
+                    table.insert(SpurTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
                 end
                 if v.ped_type == "female" and v.is_multiplayer == true and v.category_hashname == "satchels" then
-                    table.insert(SatchelTable, {hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
+                    table.insert(SatchelTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
                 end
                 if v.ped_type == "female" and v.is_multiplayer == true and v.category_hashname == "gunbelt_accs" then
-                    table.insert(GunbeltAcsTable, {hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
+                    table.insert(GunbeltAcsTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
                 end
                 if v.ped_type == "female" and v.is_multiplayer == true and v.category_hashname == "accessories" then
-                    table.insert(AccesorieTable, {hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
+                    table.insert(AccesorieTable, {hashname=v.hashname, hash = v.hash, category_hash = v.category_hash, sign = v.hash_dec_signed})
                 end
             end
         end
@@ -282,15 +284,8 @@ AddEventHandler('gum_clothes:send_to_client', function(clothing_table,can_save)
     if can_save then
         local coords_save = GetEntityCoords(PlayerPedId())
         TriggerEvent("gum_character:send_data_back", Skin_Table, Clothe_Table, coords_save)
-    else
-        local coords_save = GetEntityCoords(PlayerPedId())
-        TriggerEvent("gum_character:send_data_back", Skin_Table, Clothe_Table_Backup, coords_save)
     end
-    Citizen.Wait(1000)
-    ExecuteCommand(Config.Language[2].text)
 end)
-
-
 
 Citizen.CreateThread(function()
     Button_Prompt()
@@ -308,6 +303,7 @@ Citizen.CreateThread(function()
                         PromptSetActiveGroupThisFrame(buttons_prompt, item_name)
                     end
                     if Citizen.InvokeNative(0x305C8DCD79DA8B0F, 0, 0x27D1C284) then
+                        pricing_table = {}
                         TriggerEvent('gum:ExecuteServerCallBack','gum_clothingstore:get_outfit', function(skintable, comptable)
                             if skintable ~= 0 and skintable ~= nil and comptable ~= 0 and comptable ~= nil then
                                 Skin_Table = json.decode(skintable)
@@ -730,19 +726,6 @@ function play_anim(dict, name, time, flag)
     end
     TaskPlayAnim(PlayerPedId(), dict, name, 1.0, 1.0, time, flag, 0, true, 0, false, 0, false)  
 end
-
-local sleeves2 = false
-RegisterCommand(''..Config.Language[236].text..'', function()
-    play_anim('mech_inventory@clothing@bandana', 'neck_2_satchel', 3500, 25)
-    if not sleeves2 then 
-        Citizen.InvokeNative(0x66B957AAC2EAAEAB, PlayerPedId(),  Clothe_Table["Shirt"], `open_collar_rolled_sleeve`, 0, true, 1)
-        Citizen.InvokeNative(0xCC8CA3E88256E58F, PlayerPedId(), 0, 1, 1, 1, false)
-    else
-        Citizen.InvokeNative(0x66B957AAC2EAAEAB, PlayerPedId(),  Clothe_Table["Shirt"], `base`, 0, true, 1)
-        Citizen.InvokeNative(0xCC8CA3E88256E58F, PlayerPedId(), 0, 1, 1, 1, false)
-    end
-end)
-
 --Klobouk
 RegisterCommand(''..Config.Language[200].text..'', function(source, args, rawCommand)
     if Citizen.InvokeNative(0xFB4891BD7578CDC1, PlayerPedId(), 0x9925C067) then
@@ -1311,19 +1294,45 @@ RegisterCommand(''..Config.Language[235].text..'', function(source, args, rawCom
     play_anim('mech_loco_m@character@arthur@fidgets@item_selection@gloves', 'gloves_b', 2000, 25)
     Citizen.Wait(2000)
 	if not sleeves then 
-		Citizen.InvokeNative(0x66B957AAC2EAAEAB, PlayerPedId(), Clothe_Table["Shirt"], GetHashKey("Closed_Collar_Rolled_Sleeve"), 0, true, 1)
-		Citizen.InvokeNative(0xCC8CA3E88256E58F, PlayerPedId(), 0, 1, 1, 1, false)
+        Citizen.InvokeNative(0x66B957AAC2EAAEAB, PlayerPedId(), tonumber(Clothe_Table["Shirt"]), GetHashKey("Closed_Collar_Rolled_Sleeve"), 0, true, 1)
+        Citizen.InvokeNative(0x704C908E9C405136, PlayerPedId())
+        Citizen.InvokeNative(0xAAB86462966168CE, PlayerPedId(), 1)
+        Citizen.InvokeNative(0xCC8CA3E88256E58F, PlayerPedId(), 0, 1, 1, 1, 0)
 		sleeves = true
 	else
-		Citizen.InvokeNative(0x66B957AAC2EAAEAB, PlayerPedId(), Clothe_Table["Shirt"], GetHashKey("base"), 0, true, 1)
-		Citizen.InvokeNative(0xCC8CA3E88256E58F, PlayerPedId(), 0, 1, 1, 1, false)
+        Citizen.InvokeNative(0x66B957AAC2EAAEAB, PlayerPedId(), tonumber(Clothe_Table["Shirt"]), GetHashKey('BASE'), 0, true, 1)
+        Citizen.InvokeNative(0x704C908E9C405136, PlayerPedId())
+        Citizen.InvokeNative(0xAAB86462966168CE, PlayerPedId(), 1)
+        Citizen.InvokeNative(0xCC8CA3E88256E58F, PlayerPedId(), 0, 1, 1, 1, 0)
 		sleeves = false
 	end
 end)
+
+local sleeves2 = false
+RegisterCommand("limec", function()
+    play_anim('mech_inventory@clothing@bandana', 'neck_2_satchel', 3500, 25)
+    Citizen.Wait(2000)
+	if not sleeves2 then 
+        sleeves2 = true
+        Citizen.InvokeNative(0x66B957AAC2EAAEAB, PlayerPedId(), tonumber(Clothe_Table["Shirt"]), GetHashKey("open_collar_rolled_sleeve"), 0, true, 1)
+        Citizen.InvokeNative(0x704C908E9C405136, PlayerPedId())
+        Citizen.InvokeNative(0xAAB86462966168CE, PlayerPedId(), 1)
+        Citizen.InvokeNative(0xCC8CA3E88256E58F, PlayerPedId(), 0, 1, 1, 1, 0)
+    else
+        sleeves2 = false
+        Citizen.InvokeNative(0x66B957AAC2EAAEAB, PlayerPedId(), tonumber(Clothe_Table["Shirt"]), GetHashKey('Closed_Collar_Rolled_Sleeve'), 0, true, 1)
+        Citizen.InvokeNative(0x704C908E9C405136, PlayerPedId())
+        Citizen.InvokeNative(0xAAB86462966168CE, PlayerPedId(), 1)
+        Citizen.InvokeNative(0xCC8CA3E88256E58F, PlayerPedId(), 0, 1, 1, 1, 0)
+    end
+end)
+
+
 RegisterNUICallback('close', function(data, cb)
     FreezeEntityPosition(PlayerPedId(),false)
     in_clothe = false
     EndCam()
+    ExecuteCommand(Config.Language[2].text)
     SetNuiFocus(false, false)
     SendNUIMessage({
         type = "clothing_maker",
@@ -1353,6 +1362,7 @@ RegisterNUICallback('send_change', function(data, cb)
             Citizen.InvokeNative(0xCC8CA3E88256E58F, PlayerPedId(), 0, 1, 1, 1, 0);
             Clothe_Table["Hat"] = tonumber(HatsTable[tonumber(data.value)].hash)
             Citizen.InvokeNative(0xD3A7B003ED343FD9, PlayerPedId(), tonumber(HatsTable[tonumber(data.value)].hash), true,true,true)
+
         end
     elseif data.id == "EYEWEAR" then
         if tonumber(data.value) == 0 then
@@ -1697,7 +1707,7 @@ RegisterNUICallback('save_clothing', function(data, cb)
     for k,v in pairs(pricing_table) do
         price = price+v
     end
-    TriggerEvent("guminputs:getInput", "Potvrdit", "Jméno outfitu", function(cb)
+    TriggerEvent("guminputs:getInput", "Potvrdit", "Jméno outfitu za : "..price.."$", function(cb)
         local answer = tostring(cb)
         if answer ~= 'close' and answer ~= '' then
             TriggerServerEvent("gum_clothes:save_clothes", Clothe_Table, price, answer)
@@ -1715,6 +1725,7 @@ RegisterNUICallback('save_clothing', function(data, cb)
                 type = "clothing_maker",
                 status = false,
             })
+            pricing_table = {}
         else
             in_clothe = false
             FreezeEntityPosition(PlayerPedId(),false)
@@ -1724,19 +1735,19 @@ RegisterNUICallback('save_clothing', function(data, cb)
                 end
             end
             FreezeEntityPosition(PlayerPedId(),false)
+            ExecuteCommand(Config.Language[2].text)
             EndCam()
             SetNuiFocus(false, false)
             SendNUIMessage({
                 type = "clothing_maker",
                 status = false,
             })
+            pricing_table = {}
         end
     end)
-    pricing_table = {}
 end)
 
 function EndCam()
-    ExecuteCommand(Config.Language[2].text)
     lx,ly,lz = 0,0,0
     RenderScriptCams(false, true, 1000, true, false)
     DestroyCam(camera, false)
